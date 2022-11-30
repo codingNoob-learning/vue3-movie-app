@@ -1,10 +1,15 @@
 <template>
     <div class="container">
         <div class="inner">
-            <MovieItem
-                v-for="movie_rq in movies"
-                :key="movie_rq.imdbID"
-                :movie="movie_rq" />
+            <div class="message">
+                {{ message }}
+            </div>
+            <div class="movies">
+                <MovieItem
+                    v-for="movie_rq in movies"
+                    :key="movie_rq.imdbID"
+                    :movie="movie_rq" />
+            </div>
         </div>
     </div>
 </template>
@@ -17,10 +22,23 @@ export default {
         MovieItem
     },
     computed: {
-        // v-for="movie in movies"의 movies
+        // 8번째줄의 v-for="movie in movies"의 movies
         movies() {
             return this.$store.state.movie.movies
+        },
+        message() {
+            return this.$store.state.movie.message
         }
     }
 }
 </script>
+
+<style lang="scss" scoped>
+    .container {
+        .movies {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+</style>
