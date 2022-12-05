@@ -1,6 +1,8 @@
 import axios from 'axios'
 import _uniqBy from 'lodash/uniqBy'
 
+const _defaultMessage = 'Search for the movie title!'
+
 export default {
     // module
     namespaced: true,
@@ -8,7 +10,7 @@ export default {
     // data
     state: () => ({
         movies: [],
-        message: 'Search for the movie title!',
+        message: _defaultMessage,
         loading: false,
         theMovie: {}
     }),
@@ -27,6 +29,8 @@ export default {
         },
         resetMovies(state) {
             state.movies = []
+            state.message = _defaultMessage
+            state.loading = false
         }
     },
 

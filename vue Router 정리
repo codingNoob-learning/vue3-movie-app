@@ -1,0 +1,24 @@
+<RouterView>
+ - 페이지가 출력(렌더링)되는 영역 컴포넌트 ex) app.vue
+ - header와 footer 사이에 RouterView를 넣어서 그 영역에 nav가 active 되는 것에 따라 페이지가 바뀜
+
+<RouterLink>
+ - 페이지 이동을 위한 링크 컴포넌트
+ - a 태그의 역할로 사용됨
+
+$route(조회)
+ - Route(페이지) 정보를 가지는 객체
+ - fullPath, params
+ - 속성들이 들어있음.
+
+ https://google.com/blog/123?apikey=abcd0987&name=HEROPY
+ - https://google.com = 도메인
+ - /blog/123?apikey=abcd0987&name=HEROPY = fullPath
+ - /blog/123 = params
+ - ?apikey=abcd0987&name=HEROPY = query (key=value)으로 구성
+
+$router(조작)
+ - Route(페이지) 조작을 위한 객체
+ - push
+ - 메소드들이 들어있음.
+

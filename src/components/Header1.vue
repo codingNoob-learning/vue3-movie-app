@@ -9,15 +9,25 @@
                 <RouterLink 
                     :to="nav.href"
                     active-class="active"
+                    :class="{ active: isMatch(nav.path) }"
                     class="nav-link">
                     {{ nav.name }}
                 </RouterLink>
             </div>
         </div>
+
+        <div
+            class="user"
+            @click="toAbout">
+            <img
+                :src="image"
+                :alt="name" />
+        </div>
     </header>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Logo from '~/components/Logo'
 
 export default {
@@ -34,13 +44,38 @@ export default {
                 },
                 {
                     name: 'Movie',
-                    href: '/movie/tt4520988'
+                    href: '/movie/tt4520988',
+                    path: /^\/movie/    // '/movie'인 경우 일치
                 },
                 {
                     name: 'About',
                     href: '/about'
                 }
             ]
+        }
+    },
+
+    computed: {
+        ...mapState('about', [
+            'image',
+            'name'
+        ])
+        // image() {
+        //     return this.$store.state.about.image
+        // },
+        // name() {
+        //     return this.$store.state.about.name
+        // }
+    },
+
+    methods: {
+        isMatch(path) {
+            if (!path) return false
+            console.log(this.$route)
+            return path.test(this.$route.fullPath)
+        },
+        toAbout() {
+            this.$router.push('/about')
         }
     }
 }
@@ -52,9 +87,39 @@ export default {
         padding: 0px 40px;
         display: flex;
         align-items: center;
+        position: relative;
 
         .logo {
             margin-right: 40px;
+        }
+
+        .user {
+            width: 40px;
+            height: 40px;
+            padding: 6px;
+            box-sizing: border-box;
+            background-color: $gray-200;
+            cursor: pointer;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            right: 40px;
+            margin: auto;
+            transition: .4s;
+
+            &:hover {
+                background-color: darken($gray-200, 10%);
+            }
+
+            img {
+                width: 100%;
+            }
+        }
+
+        @include media-breakpoint-down(sm) {
+            .nav {
+                display: none;
+            }
         }
     }
 </style>

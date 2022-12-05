@@ -12,6 +12,9 @@ import MovieList from '~/components/MovieList'
 export default {
     components: {
         Headline, Search, MovieList
+    },
+    created() {
+        this.$store.commit('movie/resetMovies')
     }
 }
 </script>

@@ -44,7 +44,12 @@ module.exports = {
                     'css-loader',
                     // 현재 main.js에서 css 파일을 import시켰는데 js에서는 css를 해석할 수 없으므로 css-loader 패키지를 사용.
                     'postcss-loader',
-                    'sass-loader'
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            additionalData: '@import "~/scss/main";'
+                        }
+                    }
                 ]
             },
             {

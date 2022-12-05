@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import MovieItem from '~/components/MovieItem'
 import Loader from '~/components/Loader'
 
@@ -31,21 +32,25 @@ export default {
     },
     computed: {
         // 8번째줄의 v-for="movie in movies"의 movies
-        movies() {
-            return this.$store.state.movie.movies
-        },
-        message() {
-            return this.$store.state.movie.message
-        },
-        loading() {
-            return this.$store.state.movie.loading
-        }
+        // movies() {
+        //     return this.$store.state.movie.movies
+        // },
+        // message() {
+        //     return this.$store.state.movie.message
+        // },
+        // loading() {
+        //     return this.$store.state.movie.loading
+        // }
+        ...mapState('movie', [
+            'movies',
+            'message',
+            'loading'
+        ])
     }
 }
 </script>
 
 <style lang="scss" scoped>
-@import "~/scss/main";
     .container {
         margin-top: 30px;
 
