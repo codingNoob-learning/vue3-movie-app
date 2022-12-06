@@ -77,7 +77,8 @@ export default {
                         })
                     }
                 }
-            } catch (message) {
+            } catch ({ message }) {
+                // netlify serverless를 사용하면서 error가 객체 데이터로 들어오기 때문에 error.message를 객체 분할해서 { message }로 적은 것
                 commit('updateState', {
                     movie: [],
                     message
@@ -116,24 +117,25 @@ export default {
     }
 }
 
-function _fetchMovie(payload) {
-    const { title, type, year, page, id } = payload
-    const OMDB_API_KEY = '7035c60c'
-    const url = id
-     ? `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${id}`
-     : `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${title}&type=${type}&y=${year}&page=${page}`
+async function _fetchMovie(payload) {
+    return await axios.post('/.netlify/functions/movie', payload)
+    // const { title, type, year, page, id } = payload
+    // const OMDB_API_KEY = '7035c60c'
+    // const url = id
+    //  ? `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${id}`
+    //  : `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${title}&type=${type}&y=${year}&page=${page}`
 
-    return new Promise((resolve, reject) => {
-        axios.get(url)
-            .then(res => {
-                console.log(res)
-                if (res.data.Error) {
-                    reject(res.data.Error)
-                }
-                resolve(res)
-            })
-            .catch(err => {
-                reject(err.message)
-            })
-    })
+    // return new Promise((resolve, reject) => {
+    //     axios.get(url)
+    //         .then(res => {
+    //             console.log(res)
+    //             if (res.data.Error) {
+    //                 reject(res.data.Error)
+    //             }
+    //             resolve(res)
+    //         })
+    //         .catch(err => {
+    //             reject(err.message)
+    //         })
+    // })
 }
