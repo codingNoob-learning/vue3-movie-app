@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <h1>Parent</h1>
     <Child msg="HEROPY" />
 </template>
@@ -11,4 +11,4 @@ export default {
         Child
     }
 }
-</script>
+</script> -->

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div>Child: {{ msg }}</div>
 </template>
 
@@ -11,4 +11,4 @@ export default {
         }
     }
 }
-</script>
+</script> -->

@@ -121,20 +121,20 @@
 // })
 
 // 1208 - 5
-import { mount } from '@vue/test-utils'
-import Example from './Example.vue'
+// import { mount } from '@vue/test-utils'
+// import Example from './Example.vue'
 
-test('메시지를 변경합니다', async () => {
-    const wrapper = mount(Example)
-    // wrapper.vm === this
-    expect(wrapper.vm.msg).toBe('Hello Vue test utils!')
-    // 반응성 제공 안함
-    // wrapper.vm.msg = 'Hello HEROPY!'
+// test('메시지를 변경합니다', async () => {
+//     const wrapper = mount(Example)
+//     // wrapper.vm === this
+//     expect(wrapper.vm.msg).toBe('Hello Vue test utils!')
+//     // 반응성 제공 안함
+//     // wrapper.vm.msg = 'Hello HEROPY!'
 
-    // 비동기로 동작하고 반응성 제공함.
-    await wrapper.setData({
-        msg: 'Hello HEROPY!'
-    })
-    expect(wrapper.vm.msg).toBe('Hello HEROPY!')
-    expect(wrapper.find('div').text()).toBe('Hello HEROPY!')
-})
+//     // 비동기로 동작하고 반응성 제공함.
+//     await wrapper.setData({
+//         msg: 'Hello HEROPY!'
+//     })
+//     expect(wrapper.vm.msg).toBe('Hello HEROPY!')
+//     expect(wrapper.find('div').text()).toBe('Hello HEROPY!')
+// })
